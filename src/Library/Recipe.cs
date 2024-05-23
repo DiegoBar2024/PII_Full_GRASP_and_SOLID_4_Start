@@ -15,9 +15,17 @@ namespace Full_GRASP_And_SOLID
 
         public Product FinalProduct { get; set; }
 
-        public void AddStep(Step step)
+        // Modifico el método AddStep usando el patrón Creator
+        public Step AddStep(Product input, double quantity, Equipment equipment, int time)
         {
-            this.steps.Add(step);
+            // Creación de un objeto step de la clase Step con los parámetros de entrada
+            Step step = new Step(input, quantity, equipment, time);
+
+            // Agrego el objeto step creado a la lista de pasos
+            steps.Add(step);
+
+            // Retorno el paso creado
+            return step;
         }
 
         public void RemoveStep(Step step)
@@ -52,5 +60,6 @@ namespace Full_GRASP_And_SOLID
 
             return result;
         }
+
     }
 }
